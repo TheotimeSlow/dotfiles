@@ -1,0 +1,85 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
+export ZSH="$HOME/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(git)
+
+source $ZSH/oh-my-zsh.sh
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# Custom aliases
+alias dcuf="docker-compose up --force-recreate"
+alias ports="sudo lsof -i -P -n | grep LISTEN"
+alias spot="./gradlew spotlessApply"
+alias sony="bluetoothctl connect 88:C9:E8:79:44:3F"
+alias pushmaster="git push origin HEAD:refs/for/master"
+alias mp="cd ~/gerrit/mesParcelles/apps/"
+alias androidStudio="sh /usr/share/android-studio/bin/studio.sh"
+alias bat="upower -i /org/freedesktop/UPower/devices/battery_BAT0 | grep percentage"
+alias gnuke="git rm .gitattributes && git add -A && git reset --hard"
+alias shork="display3d ~/Images/blahaj.obj -t 0,0,5.5"
+
+export ANDROID_HOME=$HOME/android
+export ANDROID_SDK_ROOT=$HOME/Android/Sdk/
+export ANDROID_AVD_HOME=$HOME/.android/avd/
+export PATH=$ANDROID_HOME/cmdline-tools/tools/bin/:$PATH
+export PATH=$ANDROID_HOME/emulator/:$PATH
+export PATH=$ANDROID_HOME/platform-tools/:$PATH
+export PATH=$HOME/.config/rofi/scripts:$PATH
+export PATH=$HOME/.config/composer/vendor/bin:$PATH
+export PATH=$HOME/apache-maven-3.9.2/bin:$PATH
+export PATH=$HOME/flutter/flutter/bin:$PATH
+export PATH=/home/tsl/.nimble/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
+export CLOUDSDK_PYTHON_SITEPACKAGES=1
+
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null 2>&1
+
+build-cas() {
+    cd ~/gerrit/mesParcelles/apps/mesparcelles-dist/cas-dist;
+    ./gradlew build -Pversion=$1
+    ssh root@mp-demo7-nat.demo.hosting.priv.atolcd.com "service cas-mesparcelles stop";
+    scp build/distributions/cas-mesparcelles_$1_all.deb root@mp-demo7-nat.demo.hosting.priv.atolcd.com:~/;
+    ssh root@mp-demo7-nat.demo.hosting.priv.atolcd.com "dpkg -i ~/cas-mesparcelles_$1_all.deb && service cas-mesparcelles restart && rm ~/cas-mesparcelles_$1_all.deb && exit";
+}
+
+build-apiService() {
+    cd ~/gerrit/mesParcelles/apps;
+   ./gradlew java:apiService:api-ws:build;
+    ssh root@mp-demo7.demo.hosting.priv.atolcd.com "service apiService stop && cd /usr/lib/apiService/ && rm api-ws-shaded.jar && exit";
+    scp java/apiService/api-ws/build/libs/api-ws-shaded.jar root@mp-demo7.demo.hosting.priv.atolcd.com:/usr/lib/apiService/;
+    ssh root@mp-demo7.demo.hosting.priv.atolcd.com "service apiService start && exit";
+}
+
+eval "$(zoxide init zsh)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/tsl/Téléchargements/google-cloud-sdk/path.zsh.inc' ]; then . '/home/tsl/Téléchargements/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/tsl/Téléchargements/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/tsl/Téléchargements/google-cloud-sdk/completion.zsh.inc'; fi
+
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+. "$HOME/.cargo/env"

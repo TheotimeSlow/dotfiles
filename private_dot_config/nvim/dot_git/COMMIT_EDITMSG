@@ -1,0 +1,30 @@
+Update
+# Veuillez saisir le message de validation pour vos modifications. Les lignes
+# commençant par '#' seront ignorées, et un message vide abandonne la validation.
+#
+# Sur la branche master
+# Modifications qui seront validées :
+#	nouveau fichier : after/plugin/buffer_manager.lua
+#	supprimé :        after/plugin/chadtree.lua
+#	supprimé :        after/plugin/cokeline.lua
+#	supprimé :        after/plugin/cybu.lua
+#	modifié :         after/plugin/gitsigns.lua
+#	modifié :         after/plugin/hlslens.lua
+#	modifié :         after/plugin/indentBlanklines.lua
+#	supprimé :        after/plugin/memento.lua
+#	nouveau fichier : after/plugin/oil.lua
+#	nouveau fichier : after/plugin/satellite.lua
+#	supprimé :        after/plugin/scrollbar.lua
+#	supprimé :        after/plugin/tabline.lua
+#	modifié :         after/plugin/telescope.lua
+#	supprimé :        after/plugin/transparent.lua
+#	modifié :         after/plugin/treesitter.lua
+#	nouveau fichier : after/plugin/veil.lua
+#	supprimé :        after/plugin/whichkey.lua
+#	modifié :         lua/luaConf/colors.lua
+#	modifié :         lua/luaConf/init.lua
+#	modifié :         lua/luaConf/packer.lua
+#	modifié :         lua/luaConf/prefs.lua
+#	modifié :         lua/luaConf/remap.lua
+#	modifié :         plugin/packer_compiled.lua
+#
