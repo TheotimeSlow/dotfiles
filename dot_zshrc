@@ -23,7 +23,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # Custom aliases
-alias dcuf="docker-compose up --force-recreate"
+alias dcuf="docker compose up --force-recreate"
 alias ports="sudo lsof -i -P -n | grep LISTEN"
 alias spot="./gradlew spotlessApply"
 alias sony="bluetoothctl connect 88:C9:E8:79:44:3F"
@@ -66,9 +66,9 @@ build-cas() {
 build-apiService() {
     cd ~/gerrit/mesParcelles/apps;
    ./gradlew java:apiService:api-ws:build;
-    ssh root@mp-demo7.demo.hosting.priv.atolcd.com "service apiService stop && cd /usr/lib/apiService/ && rm api-ws-shaded.jar && exit";
-    scp java/apiService/api-ws/build/libs/api-ws-shaded.jar root@mp-demo7.demo.hosting.priv.atolcd.com:/usr/lib/apiService/;
-    ssh root@mp-demo7.demo.hosting.priv.atolcd.com "service apiService start && exit";
+    ssh root@mp-demo5.demo.hosting.priv.atolcd.com "service apiService stop && cd /usr/lib/apiService/ && rm api-ws-shaded.jar && exit";
+    scp java/apiService/api-ws/build/libs/api-ws-shaded.jar root@mp-demo5.demo.hosting.priv.atolcd.com:/usr/lib/apiService/;
+    ssh root@mp-demo5.demo.hosting.priv.atolcd.com "service apiService start && exit";
 }
 
 eval "$(zoxide init zsh)"

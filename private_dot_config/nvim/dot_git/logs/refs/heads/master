@@ -1,9 +1,0 @@
-0000000000000000000000000000000000000000 b619e13c879a8e815839c6ebf393988273297fd2 Théotime SLOWINSKI <tsl@atolcd.com> 1679495823 +0100	commit (initial): init
-b619e13c879a8e815839c6ebf393988273297fd2 732369a0f4f6a64041b1bdc128a800d366b7d2a7 Théotime SLOWINSKI <tsl@atolcd.com> 1679495931 +0100	commit: Add .gitignore
-732369a0f4f6a64041b1bdc128a800d366b7d2a7 6479c72d0aa1cfdcac30fe7253463bc97c132de9 Théotime SLOWINSKI <tsl@atolcd.com> 1679581821 +0100	commit: Remove ESlint, add remaps, add airblade/vim-gitgutter
-6479c72d0aa1cfdcac30fe7253463bc97c132de9 58e90894ac082cde65d34c11744f8076a41e1834 TheotimeSlow <tsl@atolcd.com> 1679672953 +0100	commit: Add blankline, bufferline, gitsigns, lualine, toggleterm plugins
-58e90894ac082cde65d34c11744f8076a41e1834 9378bde705acbfc7b93d7176aa592ffbc2d1dd9c TheotimeSlow <tsl@atolcd.com> 1680690848 +0200	commit: Add biscuits, chadtree, cokeline, many things...
-9378bde705acbfc7b93d7176aa592ffbc2d1dd9c f4cb20faa1876c1d8114e7985083b593e31a2881 TheotimeSlow <tsl@atolcd.com> 1683098535 +0200	commit: Plugin and theme improvements :sparkles:
-f4cb20faa1876c1d8114e7985083b593e31a2881 89fa1590ca0777de4eff700886917427cf55f07a TheotimeSlow <tsl@atolcd.com> 1683619876 +0200	commit: I3 config
-89fa1590ca0777de4eff700886917427cf55f07a 3ff0336afe5f79ffc43efffdd69a1837b72b502e TheotimeSlow <tsl@atolcd.com> 1688994191 +0200	commit: suppression twilight hlchunk, ajout tabline cybu, etc..
-3ff0336afe5f79ffc43efffdd69a1837b72b502e c03c5baeb59a85ec97364eb002ac93d896a06d34 TheotimeSlow <tsl@atolcd.com> 1697010312 +0200	commit: Update
